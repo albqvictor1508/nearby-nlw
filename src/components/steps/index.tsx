@@ -2,7 +2,6 @@ import { Text, View } from "react-native";
 import { s } from "./style";
 import StepItem from "../step-item";
 import { IconMapPin, IconQrcode, IconTicket } from "@tabler/icons-react-native";
-import Button from "../button";
 
 const Steps = () => {
 	return (
@@ -24,8 +23,6 @@ const Steps = () => {
 				title="Garanta vantagens perto de você"
 				description="Ative cupons onde estiver, em diferentes tipos de estabelecimento"
 			/>
-
-			<Button title="Entrar" />
 		</View>
 	);
 };
