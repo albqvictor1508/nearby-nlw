@@ -1,19 +1,13 @@
 import { View, Text } from "react-native";
 
+import Welcome from "@/components/welcome";
+import Steps from "@/components/steps";
+
 const HomeScreen = () => {
 	return (
-		<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-			<Text
-				style={{
-					fontWeight: "semibold",
-					fontSize: 24,
-				}}
-			>
-				Bom dia!
-			</Text>
-			<Text style={{ fontWeight: "light", fontSize: 14, marginTop: 5 }}>
-				Você está linda hoje lexsa!
-			</Text>
+		<View style={{ flex: 1, padding: 40, gap: 40 }}>
+			<Welcome />
+			<Steps />
 		</View>
 	);
 };
