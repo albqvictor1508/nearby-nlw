@@ -10,6 +10,7 @@ import {
 } from "@expo-google-fonts/rubik";
 
 import Loading from "@/components/loading";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const Layout = () => {
 	const [fontsLoaded] = useFonts({
@@ -24,12 +25,14 @@ const Layout = () => {
 	}
 
 	return (
-		<Stack
-			screenOptions={{
-				headerShown: false,
-				contentStyle: { backgroundColor: colors.gray[100] },
-			}}
-		/>
+		<GestureHandlerRootView>
+			<Stack
+				screenOptions={{
+					headerShown: false,
+					contentStyle: { backgroundColor: colors.gray[100] },
+				}}
+			/>
+		</GestureHandlerRootView>
 	);
 };
 
