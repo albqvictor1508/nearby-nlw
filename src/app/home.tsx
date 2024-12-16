@@ -7,8 +7,14 @@ import { useEffect, useState } from "react";
 import { Categories, type CategoriesProps } from "@/components/categories";
 import type { PlaceProps } from "@/components/place";
 import Places from "@/components/places";
+import MapView from "react-native-maps";
 
 type MarketsProps = PlaceProps & {};
+
+const currentLocation = {
+	latitude: -23.561187293883442,
+	longitude: -46.656451388116494,
+};
 
 const Home = () => {
 	const [categories, setCategories] = useState<CategoriesProps>([]);
@@ -54,6 +60,16 @@ const Home = () => {
 				data={categories}
 				onSelect={setCategory}
 				selected={category}
+			/>
+
+			<MapView
+				style={{ flex: 1, backgroundColor: "#CECECE" }}
+				initialRegion={{
+					latitude: currentLocation.latitude,
+					longitude: currentLocation.longitude,
+					latitudeDelta: 0.01,
+					longitudeDelta: 0.01,
+				}}
 			/>
 
 			<Places data={markets} />
