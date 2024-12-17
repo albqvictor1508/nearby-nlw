@@ -57,7 +57,7 @@ const Home = () => {
 
 	useEffect(() => {
 		fetchMarkets();
-	}, [category]); //depende do useEffect de categorys pra funcionar, pois é filtrado por categoria na API e nas props
+	}, [category]); //depende do useEffect de categories pra funcionar, pois é filtrado por categoria na API e nas props
 
 	return (
 		<View style={{ flex: 1, backgroundColor: "#CECECE" }}>

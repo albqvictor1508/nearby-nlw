@@ -34,7 +34,7 @@ const Places = ({ data }: Props) => {
 				renderItem={({ item }) => (
 					<Place
 						data={item}
-						onPress={() => router.navigate(`/markets/${item.id}`)}
+						onPress={() => router.navigate(`/market/${item.id}`)}
 					/>
 				)}
 				contentContainerStyle={s.content}

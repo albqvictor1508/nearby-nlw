@@ -2,7 +2,7 @@ import Loading from "@/components/loading";
 import { api } from "@/services/api";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { useEffect, useRef, useState } from "react";
-import { Alert, Modal, View } from "react-native";
+import { Alert, Modal, ScrollView, StatusBar, View } from "react-native";
 import Details, { PropsDetails } from "./details";
 import Cover from "./cover";
 import Coupon from "./coupon";
@@ -24,6 +24,7 @@ const Market = () => {
 	const params = useLocalSearchParams<{ id: string }>();
 
 	const qrLock = useRef(false);
+	console.log(params.id);
 
 	async function fetchMarket() {
 		try {
@@ -46,6 +47,7 @@ const Market = () => {
 				return Alert.alert("Camera", "É necessário habilitar o uso da câmera");
 			}
 
+			qrLock.current = false;
 			setIsVisibleCameraModal((prev) => !prev);
 		} catch (error) {
 			console.log(error);
@@ -82,7 +84,7 @@ const Market = () => {
 
 	useEffect(() => {
 		fetchMarket();
-	}, [params.id]);
+	}, [params.id, coupon]);
 
 	if (isLoading) return <Loading />;
 
@@ -90,9 +92,13 @@ const Market = () => {
 
 	return (
 		<View style={{ flex: 1 }}>
-			<Cover uri={data.cover} />
-			<Details data={data} />
-			{coupon && <Coupon code={coupon} />}
+			<StatusBar barStyle="light-content" hidden={isVisibleCameraModal} />
+
+			<ScrollView showsVerticalScrollIndicator={false}>
+				<Cover uri={data.cover} />
+				<Details data={data} />
+				{coupon && <Coupon code={coupon} />}
+			</ScrollView>
 
 			<View style={{ padding: 32 }}>
 				<Button onPress={handleOpenCamera}>
